@@ -64,7 +64,7 @@
     <!-- <div id="popup">Loading time: <span id="loadTime"></span> ms</div> -->
     <div id="progressPopup">
         Loading... <span id="loadPercentage">0</span>%<br>
-        Time elapsed: <span id="elapsedTime">0</span> ms
+        Time elapsed: <span id="elapsedTime">0</span> s
     </div>
     <div class="screen">
         <!-- <embed src="https://10ax.online.tableau.com/#/site/preprodtmp/views/ProductbyProductFeature/ProductbyProductFeature" type=""> -->
@@ -93,7 +93,7 @@
             const elapsedTime = currentTime - startTime;
 
             // Simulate progress increment
-            let progress = Math.min((elapsedTime / 10000) * 100, 99.99);
+            let progress = Math.min((elapsedTime), 99.99);
 
             loadPercentageElement.textContent = progress.toFixed(2);
             elapsedTimeElement.textContent = elapsedTime.toFixed(2);
@@ -108,8 +108,8 @@
             const endTime = performance.now();
             const loadTime = endTime - startTime;
             loadPercentageElement.textContent = 100;
-            // elapsedTimeElement.textContent = loadTime.toFixed(2);
-            elapsedTimeElement.textContent = (loadTime/1000).toFixed(2);
+            elapsedTimeElement.textContent = loadTime.toFixed(2);
+            // elapsedTimeElement.textContent = (loadTime/1000).toFixed(2);
 
             // Hide the popup after a few seconds
             setTimeout(() => {
