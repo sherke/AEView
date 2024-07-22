@@ -93,7 +93,7 @@
             const elapsedTime = currentTime - startTime;
 
             // Simulate progress increment
-            let progress = Math.min((elapsedTime), 99.99);
+            let progress = Math.min((elapsedTime/10), 99.99);
 
             loadPercentageElement.textContent = progress.toFixed(2);
             elapsedTimeElement.textContent = elapsedTime.toFixed(2);
