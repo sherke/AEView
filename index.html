@@ -93,7 +93,7 @@
             const elapsedTime = currentTime - startTime;
 
             // Simulate progress increment
-            let progress = Math.min((elapsedTime), 99.99);
+            let progress = Math.min((elapsedTime/100), 99.99);
 
             loadPercentageElement.textContent = progress.toFixed(2);
             elapsedTimeElement.textContent = elapsedTime.toFixed(2);
@@ -108,8 +108,8 @@
             const endTime = performance.now();
             const loadTime = endTime - startTime;
             loadPercentageElement.textContent = 100;
-            elapsedTimeElement.textContent = loadTime.toFixed(2);
-            // elapsedTimeElement.textContent = (loadTime/1000).toFixed(2);
+            // elapsedTimeElement.textContent = loadTime.toFixed(2);
+            elapsedTimeElement.textContent = (loadTime/100).toFixed(2);
 
             // Hide the popup after a few seconds
             setTimeout(() => {
