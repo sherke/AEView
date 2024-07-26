@@ -93,7 +93,11 @@
         iframe.onload = function () {
             clearInterval(progressInterval);
             loadPercentageElement.textContent = 100;
-			progressPopup.style.display = 'none';
+
+            // Hide the popup after a few seconds
+            setTimeout(() => {
+                progressPopup.style.display = 'none';
+            }, 5000);
         };
     </script>
 </body>
