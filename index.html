@@ -61,7 +61,7 @@
 <body>
     <!-- <div id="popup">Loading time: <span id="loadTime"></span> ms</div> -->
     <div id="progressPopup">
-        Please Wait... <span id="loadPercentage">0</span>%<br>
+        Please wait while the dashboard loads <span id="loadPercentage">0</span>%<br>
     </div>
     <div class="screen">
         <iframe class="tableau" id="tableauFrame"
@@ -93,11 +93,7 @@
         iframe.onload = function () {
             clearInterval(progressInterval);
             loadPercentageElement.textContent = 100;
-
-            // Hide the popup after a few seconds
-            setTimeout(() => {
-                progressPopup.style.display = 'none';
-            }, 60000);
+			progressPopup.style.display = 'none';
         };
     </script>
 </body>
