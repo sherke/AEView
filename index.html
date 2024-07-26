@@ -10,6 +10,7 @@
             margin: 0%;
             padding: 0%;
         }
+
         .screen {
             width: auto;
             height: 99.5vh;
@@ -40,8 +41,6 @@
             z-index: 1000;
         }
 
-
-
         #progressPopup {
             display: none;
             position: fixed;
@@ -62,18 +61,12 @@
 <body>
     <!-- <div id="popup">Loading time: <span id="loadTime"></span> ms</div> -->
     <div id="progressPopup">
-        Loading... <span id="loadPercentage">0</span>%<br>
-        Time elapsed: <span id="elapsedTime">0</span> ms
+        Please Wait... <span id="loadPercentage">0</span>%<br>
     </div>
     <div class="screen">
-        <!-- <embed src="https://10ax.online.tableau.com/#/site/preprodtmp/views/ProductbyProductFeature/ProductbyProductFeature" type=""> -->
         <iframe class="tableau" id="tableauFrame"
-            src="https://10ax.online.tableau.com/t/preprodtmp/views/AEViewWithDependency_CustomerData_17217310628480/AEView?:showVizHome=no&:embed=true"
+            src="https://10ax.online.tableau.com/t/preprodtmp/views/ProductbyProductFeature/ProductbyProductFeature?:showVizHome=no&:embed=true"
             frameborder="0"></iframe>
-<!--         https://10ax.online.tableau.com/t/preprodtmp/views/AEViewWithDependency_CustomerData_17217310628480/AEView?:origin=card_share_link&:embed=n -->
-<!--         https://10ax.online.tableau.com/t/preprodtmp/views/ProductbyProductFeature/ProductbyProductFeature?:showVizHome=no&:embed=true -->
-<!--         https://10ax.online.tableau.com/t/preprodtmp/views/AEViewWithDependency_CustomerData_17217266551130/AEView?:showVizHome=no&:embed=true -->
-        <!-- <iframe  src="https://10ax.online.tableau.com/#/site/preprodtmp/views/ProductbyProductFeature/ProductbyProductFeature" frameborder="0"></iframe> -->
     </div>
 
     <!-- <script src="./index.js"></script> -->
@@ -81,24 +74,16 @@
         const iframe = document.getElementById('tableauFrame');
         const progressPopup = document.getElementById('progressPopup');
         const loadPercentageElement = document.getElementById('loadPercentage');
-        const elapsedTimeElement = document.getElementById('elapsedTime');
-
-        // Measure the time when the iframe starts loading
-        const startTime = performance.now();
 
         // Show the progress popup
         progressPopup.style.display = 'block';
 
         // Function to update the progress
         const updateProgress = () => {
-            const currentTime = performance.now();
-            const elapsedTime = currentTime - startTime;
-
             // Simulate progress increment
             let progress = Math.min((elapsedTime/10000)*100, 99.99);
 
             loadPercentageElement.textContent = progress.toFixed(2);
-            elapsedTimeElement.textContent = elapsedTime.toFixed(2);
         };
 
         // Update the progress every 100 milliseconds
@@ -107,16 +92,12 @@
         // Event listener for when the iframe finishes loading
         iframe.onload = function () {
             clearInterval(progressInterval);
-            const endTime = performance.now();
-            const loadTime = endTime - startTime;
             loadPercentageElement.textContent = 100;
-            // elapsedTimeElement.textContent = loadTime.toFixed(2);
-            elapsedTimeElement.textContent = (loadTime).toFixed(2);
 
             // Hide the popup after a few seconds
             setTimeout(() => {
                 progressPopup.style.display = 'none';
-            }, 5000);
+            }, 60000);
         };
     </script>
 </body>
